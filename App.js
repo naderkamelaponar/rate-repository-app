@@ -4,7 +4,12 @@ import Main from './src/Main';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>بسم الله الرحمن الرحيم</Text>
+      <Text style={{
+    fontSize:21,
+    textAlign:'center',
+    margin:10,
+    color:"#"
+  }}>بسم الله الرحمن الرحيم</Text>
       <StatusBar style="auto" />
       <Main />
     </View>
