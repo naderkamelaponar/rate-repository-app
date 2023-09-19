@@ -5,11 +5,13 @@ const theme = {
     textWhite: "#eef2f7",
     bgPrimary: "#31568f",
     bgSecondary: "#c8d0dd",
+    majisty: "#990000",
   },
   fontSizes: {
     body: 14,
     subHead: 16,
     super: 20,
+    majisty: 27,
   },
   fonts: {
     main: "System",
@@ -17,6 +19,7 @@ const theme = {
   fontWeights: {
     normal: "400",
     bold: "700",
+    majisty: "999",
   },
 };
 export default theme;
