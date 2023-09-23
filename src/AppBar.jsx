@@ -1,6 +1,6 @@
 /** بسم الله الرحمن الرحيم */
 import { SafeAreaView, ScrollView, View, StyleSheet } from "react-native";
-import Text from "./Text";
+import Text from "./components/Text";
 import { Link } from "react-router-native";
 import Constants from "expo-constants";
 import theme from "./theme";
@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
 
     flexDirection: "row",
-    // ...
   },
   linkItemView: {
     flexGrow: 2,

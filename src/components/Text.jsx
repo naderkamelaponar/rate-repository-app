@@ -1,6 +1,6 @@
 /** بسم الله الرحمن الرحيم */
 import { Text as NativeText, StyleSheet } from "react-native";
-import theme from "./theme";
+import theme from "../theme";
 const styles = StyleSheet.create({
   text: {
     color: theme.colors.textPrimary,

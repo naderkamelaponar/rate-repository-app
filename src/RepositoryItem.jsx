@@ -1,6 +1,6 @@
 /** بسم الله الرحمن الرحيم */
 import { Text, View, StyleSheet, Pressable } from "react-native";
-import Avatar from "./Avatar";
+import Avatar from "./components/Avatar";
 import theme from "./theme";
 const RepoHeader = ({ fullName, description, avatar, language }) => {
   const xd = StyleSheet.create({
@@ -12,35 +12,56 @@ const RepoHeader = ({ fullName, description, avatar, language }) => {
 
     titleView: {
       padding: 5,
-      width: 400,
-      color: theme.colors.textBlack,
     },
     nameText: {
       color: theme.colors.textBlack,
       fontSize: theme.fontSizes.subHead,
       fontWeight: theme.fontWeights.bold,
+      margin: 2,
     },
     descText: {
       color: theme.colors.textBlack,
       fontSize: theme.fontSizes.subHead,
       fontWeight: theme.fontWeights.normal,
+      margin: 2,
     },
     repoPress: {
       color: theme.colors.textWhite,
       backgroundColor: theme.colors.bgPrimary,
       textAlign: "center",
-      width: 100,
+      borderRadius: 5,
+
+      width: 125,
+    },
+    pressText: {
+      fontSize: theme.fontSizes.subHead,
+      color: theme.colors.textWhite,
+      padding: 3,
+    },
+    avatarImage: {
+      height: 75,
+      borderRadius: 5,
+      width: 75,
+      borderColor: theme.colors.textBlack,
+      borderWidth: 1,
     },
   });
 
   return (
     <View style={xd.mainView}>
-      <Avatar url={avatar} alt={fullName} />
+      <Avatar style={xd.avatarImage} url={avatar} alt={fullName} />
 
       <View style={xd.titleView}>
         <Text style={xd.nameText}>{fullName}</Text>
         <Text style={xd.descText}>{description}</Text>
-        <Pressable style={xd.repoPress}>{language}</Pressable>
+        <Pressable
+          onPress={() => {
+            window.alert("it works!");
+          }}
+          style={xd.repoPress}
+        >
+          <Text style={xd.pressText}>{language}</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -51,7 +72,11 @@ const RepoContent = ({ title, subTitle }) => {
       rowGap: 5,
       flex: 1,
       textAlign: "center",
-      justifyContent: "space-around",
+      borderWidth: 1,
+      borderRadius: 5,
+    },
+    subView: {
+      padding: 5,
     },
     title: {
       color: theme.colors.textBlack,
@@ -66,8 +91,12 @@ const RepoContent = ({ title, subTitle }) => {
   });
   return (
     <View style={xd.mainView}>
-      <Text style={xd.title}>{title}</Text>
-      <Text style={xd.subTitle}>{subTitle}</Text>
+      <View style={xd.subView}>
+        <Text style={xd.title}>{title}</Text>
+      </View>
+      <View style={xd.subView}>
+        <Text style={xd.subTitle}>{subTitle}</Text>
+      </View>
     </View>
   );
 };
@@ -82,6 +111,10 @@ const RepoFooter = ({
       flex: "display",
       width: 500,
       flexDirection: "row",
+    },
+    subView: {
+      width: 120,
+      padding: 5,
     },
   });
   const resFormat = (no) => {
@@ -102,26 +135,34 @@ const RepoFooter = ({
 
   return (
     <View style={xd.mainView}>
-      <RepoContent title={forksCount} subTitle={"Forks"} />
-      <RepoContent title={ratingAverage} subTitle={"Rating"} />
-      <RepoContent title={reviewCount} subTitle={"Reviews"} />
-      <RepoContent title={stargazersCount} subTitle={"Stars"} />
+      <View style={xd.subView}>
+        <RepoContent title={forksCount} subTitle={"Forks"} />
+      </View>
+      <View style={xd.subView}>
+        <RepoContent title={ratingAverage} subTitle={"Rating"} />
+      </View>
+      <View style={xd.subView}>
+        <RepoContent title={reviewCount} subTitle={"Reviews"} />
+      </View>
+      <View style={xd.subView}>
+        <RepoContent title={stargazersCount} subTitle={"Stars"} />
+      </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
+  mainContainer: {
+    padding: 5,
+    borderColor: "black",
+    borderWidth: 1,
+    borderRadius: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: "#eee",
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
-  },
-
-  header: {
-    fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSizes.body,
-    color: theme.colors.textPrimary,
   },
   subHead: {
     fontWeight: theme.fontWeights.normal,
@@ -147,19 +188,23 @@ const RepositoryItem = (repo) => {
     ownerAvatarUrl,
   } = rData;
   return (
-    <View style={styles.container}>
-      <RepoHeader
-        fullName={fullName}
-        avatar={ownerAvatarUrl}
-        description={description}
-        language={language}
-      />
-      <RepoFooter
-        reviewCount={reviewCount}
-        ratingAverage={ratingAverage}
-        forksCount={forksCount}
-        stargazersCount={stargazersCount}
-      />
+    <View style={styles.mainContainer}>
+      <View style={styles.container}>
+        <RepoHeader
+          fullName={fullName}
+          avatar={ownerAvatarUrl}
+          description={description}
+          language={language}
+        />
+      </View>
+      <View style={styles.container}>
+        <RepoFooter
+          reviewCount={reviewCount}
+          ratingAverage={ratingAverage}
+          forksCount={forksCount}
+          stargazersCount={stargazersCount}
+        />
+      </View>
     </View>
   );
 };
