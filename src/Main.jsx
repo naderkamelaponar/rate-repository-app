@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 const Main = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.appHeader}>Rate Repository Application ex 10.3</Text>
+      <Text style={styles.appHeader}>Rate Repository Application ex 10.9</Text>
       <AppBar />
 
       <Routes>

@@ -1,11 +1,12 @@
 /** بسم الله الرحمن الرحيم */
 const theme = {
   colors: {
+    majisty: "#990000",
     textBlack: "#0a0a0a",
     textWhite: "#eef2f7",
     bgPrimary: "#31568f",
     bgSecondary: "#c8d0dd",
-    majisty: "#990000",
+    errorColor: "#d73a4a",
   },
   fontSizes: {
     body: 14,
