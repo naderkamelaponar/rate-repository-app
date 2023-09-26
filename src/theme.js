@@ -15,7 +15,9 @@ const theme = {
     majisty: 27,
   },
   fonts: {
-    main: "System",
+    default: "System",
+    android: "Roboto",
+    ios: "Arial",
   },
   fontWeights: {
     normal: "400",

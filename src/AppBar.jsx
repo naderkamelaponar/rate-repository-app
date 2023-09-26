@@ -1,5 +1,11 @@
 /** بسم الله الرحمن الرحيم */
-import { SafeAreaView, ScrollView, View, StyleSheet } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  StyleSheet,
+  Platform,
+} from "react-native";
 import Text from "./components/Text";
 import { Link } from "react-router-native";
 import Constants from "expo-constants";
@@ -7,7 +13,6 @@ import theme from "./theme";
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-
     flexDirection: "row",
   },
   linkItemView: {
@@ -17,7 +22,13 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   linkItemText: {
-    fontSize: theme.fontSizes.super,
+    fontSize: theme.fontSizes.subHead,
+    backfaceVisibility: 1,
+    fontFamily: Platform.select({
+      android: theme.fonts.android,
+      ios: theme.fonts.ios,
+      default: theme.fonts.default,
+    }),
   },
   mainView: {
     flexDirection: "row",
@@ -37,35 +48,24 @@ const AppBar = () => {
         <View style={styles.mainView}>
           <Link to="/">
             <View style={styles.linkItemView}>
-              <Text
-                style={styles.linkItemText}
-                color="textSecondary"
-                fontSize="subheading"
-              >
-                Repositories
-              </Text>
+              <Text style={styles.linkItemText}>Repositories</Text>
             </View>
           </Link>
           <Link to="/signin">
             <View style={styles.linkItemView}>
-              <Text
-                style={styles.linkItemText}
-                color="textSecondary"
-                fontSize="subheading"
-              >
-                Sign in
-              </Text>
+              <Text style={styles.linkItemText}>Sign in</Text>
             </View>
           </Link>
           <View style={styles.linkItemView}>
-            <Text
-              style={styles.linkItemText}
-              color="textSecondary"
-              fontSize="subheading"
-            >
+            <Text style={styles.linkItemText}>
               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             </Text>
           </View>
+          <Link to="/signin">
+            <View style={styles.linkItemView}>
+              <Text style={styles.linkItemText}>Sign in</Text>
+            </View>
+          </Link>
         </View>
       </ScrollView>
     </SafeAreaView>
